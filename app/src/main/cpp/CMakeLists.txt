@@ -8,6 +8,10 @@ cmake_minimum_required(VERSION 3.4.1)
 # 设置生成的so动态库最后输出的路径
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../../../jniLibs/${ANDROID_ABI})
 
+# file 文件操作命令。
+# GLOB 会根据后面表达式匹配文件组成列表，保存在变量中。
+# 不推荐使用，因为：如果CMakeLists.txt文件没有改变，即便在该源码树中添加或删除文件，
+# 产生的构建系统也不会知道何时该要求CMake重新产生构建文件。
 file(GLOB bzip2 bzip2/*.c)
 
 # 导入头文件就可以不使用路径+头文件了，并且可以使用<>代替""引入
